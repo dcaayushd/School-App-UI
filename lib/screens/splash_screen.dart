@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:scholae/constants.dart';
+import 'package:scholae/screens/login_screen.dart';
 
 class SplashScreen extends StatelessWidget {
   const SplashScreen({super.key});
@@ -9,6 +10,17 @@ class SplashScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    // Using Future to go from one screen to other via duration time
+    Future.delayed(
+      Duration(seconds: 3),
+      () {
+        /* No return when user is on the login Screen and press back, 
+        it will not return the user to the splash screen */
+        Navigator.pushNamedAndRemoveUntil(
+            context, LoginScreen.routeName, (route) => false);
+      },
+    );
+
     // Scaffold color set to primary color in main.dart in our text theme
     return Scaffold(
       body: Center(
